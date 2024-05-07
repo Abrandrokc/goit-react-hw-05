@@ -6,14 +6,14 @@ import { useRef } from "react"
 export default function MovieInfo({ info }) {
    
     const location = useLocation()
-     const backPath = useRef(location.state)
+     const backPath = useRef(location)
     console.log(location.state)
     
     
      const { genres, title, vote_average, overview, tagline, poster_path,id } = info;
     return <div>
        
-       <Link to={`${backPath.current.location}`} >Go back</Link>
+       <Link to={`${location.state?.BackLink?.current?.pathname}?${location.state?.BackLink?.current?.search}`} >Go back</Link>
            
        <div>
           
