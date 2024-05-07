@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import css from "./CastList.module.css"
 export default function CastList({ info }) {
-    console.log(info)
+    
     return (
         <ul>
             {info.map(({ name, character, profile_path, id }) => (

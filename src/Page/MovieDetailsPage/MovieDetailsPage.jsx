@@ -14,7 +14,7 @@ export default function MovieDetailsPage() {
         async function getInfo() {
             try {
                 setLoader(true)
-                const data = await  filmInfo(location.state)
+                const data = await  filmInfo(location.state.id)
                 setData(data)
             }
             catch {setError(true) }
@@ -29,6 +29,7 @@ export default function MovieDetailsPage() {
     return <>
         {loader && <Loader />}
         {error && <p>Error. Try agan</p>}
+        
         {data.id && <MovieInfo info={data} />}
     </>
     

@@ -1,6 +1,5 @@
 import css from "./MovieCast.module.css"
 import { useLocation, } from "react-router-dom"
-
 import {castInfo} from "../../api"
 import { useEffect, useState } from "react"
 import Loader from "../../components/loader"
@@ -10,12 +9,13 @@ export default function MovieCast() {
     const [data, setData] = useState({})
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false)
-    console.log(location)
+  console.log(location)
+    
     useEffect(() => {
         async function getInfo() {
             try {
                 setLoader(true)
-                const data = await  castInfo(location.state)
+                const data = await  castInfo(location.state.id)
                 setData(data)
             }
             catch {setError(true) }
@@ -26,7 +26,7 @@ export default function MovieCast() {
          }
         getInfo()
     }, [])
-    console.log(data)
+    
     return <>
         {loader && <Loader />}
         {error && <p>Error. Try agan</p>}
