@@ -1,11 +1,11 @@
 import css from "./MovieCast.module.css"
-import { useLocation, } from "react-router-dom"
+import { useLocation, useParams, } from "react-router-dom"
 import {castInfo} from "../../api"
 import { useEffect, useState } from "react"
 import Loader from "../../components/loader"
 import CastList from "../Castlist/CastList"
 export default function MovieCast() {
-      const location = useLocation()
+      const ids = useParams()
     const [data, setData] = useState({})
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false)
@@ -15,7 +15,7 @@ export default function MovieCast() {
         async function getInfo() {
             try {
                 setLoader(true)
-                const data = await  castInfo(location.state.id)
+                const data = await  castInfo(ids.movieId)
                 setData(data)
             }
             catch {setError(true) }

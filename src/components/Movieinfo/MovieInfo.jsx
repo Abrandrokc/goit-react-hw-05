@@ -6,14 +6,14 @@ import { useRef } from "react"
 export default function MovieInfo({ info }) {
    
     const location = useLocation()
-     const backPath = useRef(location)
-    console.log(location.state)
+     const backPath = useRef(location.state)
+    console.log(backPath.current)
     
     
-     const { genres, title, vote_average, overview, tagline, poster_path,id } = info;
+     const { genres, title, vote_average, overview, tagline, poster_path } = info;
     return <div>
        
-       <Link to={`${location.state?.BackLink?.current?.pathname}?${location.state?.BackLink?.current?.search}`} >Go back</Link>
+       <Link to={`${backPath.current.pathname}${backPath.current.search}`} >Go back</Link>
            
        <div>
           
@@ -34,8 +34,8 @@ export default function MovieInfo({ info }) {
             <p>Additional information</p>
             <ul>
                 <li>
-                    <NavLink to="reviews" state={{ id, backPath }}>Reviews</NavLink>
-                    <NavLink to="cast" state={ { id, backPath   }}>Cast</NavLink>
+                    <NavLink to="reviews" state={  backPath }>Reviews</NavLink>
+                    <NavLink to="cast" state={  backPath   }>Cast</NavLink>
                </li>
                
             </ul>

@@ -1,12 +1,13 @@
 import { reviewsInfo } from "../../api"
 import css from "./MovieReviews.module.css"
 
-import { Outlet, useLocation, } from "react-router-dom"
+import { Outlet, useLocation, useParams, } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Loader from "../../components/loader"
 import ReviewsList from "../reviewsList/reviews"
 export default function MovieReviews() {
-    const location = useLocation()
+    const ids = useParams()
+    const location= useLocation()
     const [data, setData] = useState({})
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false)
@@ -15,7 +16,7 @@ export default function MovieReviews() {
         async function getInfo() {
             try {
                 setLoader(true)
-                const data = await  reviewsInfo(location.state.id)
+                const data = await  reviewsInfo(ids.movieId)
                 setData(data)
             }
             catch {setError(true) }
