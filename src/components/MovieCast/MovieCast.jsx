@@ -18,7 +18,10 @@ export default function MovieCast() {
                 const data = await  castInfo(ids.movieId)
                 setData(data)
             }
-            catch {setError(true) }
+            catch {
+                setError(true)
+            console.log(error)
+            }
             finally {
                 setLoader(false)
                 
@@ -29,7 +32,7 @@ export default function MovieCast() {
     
     return <>
         {loader && <Loader />}
-        {error && <p>Error. Try agan</p>}
+        {error && <p>Error.<Link to="/">Go back</Link></p>}
         {data.length && <CastList info={data} />}
        
     </>
