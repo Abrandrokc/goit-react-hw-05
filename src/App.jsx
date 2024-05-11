@@ -1,10 +1,10 @@
 
 import {lazy, Suspense} from "react"
 import { Route, Routes } from 'react-router-dom'
-const HomePage = lazy(() => import("./Page/HomePage/HomePage"))
-const MoviesPage = lazy(() => import("./Page/MoviesPage/MoviesPage"))
-const MovieDetailsPage = lazy(() => import("./Page/MovieDetailsPage/MovieDetailsPage"))
-const NotFoundPage = lazy(() => import("./Page/NotFoundPage/NotFoundPage"))
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"))
+const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"))
+const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage/MovieDetailsPage"))
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"))
 const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"))
 const MovieReviews = lazy(() => import("./components/MovieReviews/MovieReviews"))
 const Navigation = lazy(() => import("./components/Navigation/Navigation"))
