@@ -10,15 +10,15 @@ const MovieReviews = lazy(() => import("./components/MovieReviews/MovieReviews")
 const Navigation = lazy(() => import("./components/Navigation/Navigation"))
 function App() {
   return <>
-   
+   <Navigation />
     <Suspense fallback={null}>
-       <Navigation />
+       
       <Routes>
     <Route path='/' element={<HomePage />} />
     <Route path='/movies' element={<MoviesPage />} />
     <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
-      <Route path='/movies/:movieId/cast'  element={<MovieCast />} />
-      <Route path='/movies/:movieId/reviews' element={<MovieReviews />} />
+      <Route path='cast'  element={<MovieCast />} />
+      <Route path='reviews' element={<MovieReviews />} />
     </Route>
     <Route path='*' element={<NotFoundPage />} />
  </Routes>

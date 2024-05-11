@@ -7,11 +7,11 @@ import Loader from "../../components/loader"
 import ReviewsList from "../reviewsList/reviews"
 export default function MovieReviews() {
     const ids = useParams()
-    const location= useLocation()
+    
     const [data, setData] = useState({})
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false)
-    console.log(location)
+    console.log(ids)
     useEffect(() => {
         async function getInfo() {
             try {
@@ -26,7 +26,7 @@ export default function MovieReviews() {
             }
          }
         getInfo()
-    }, [])
+    }, [ids.movieId])
     
     return <>
         {loader && <Loader />}

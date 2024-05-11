@@ -25,7 +25,7 @@ export default function MovieCast() {
             }
          }
         getInfo()
-    }, [])
+    }, [ids.movieId])
     
     return <>
         {loader && <Loader />}

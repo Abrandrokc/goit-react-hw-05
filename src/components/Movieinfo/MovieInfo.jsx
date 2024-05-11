@@ -10,13 +10,13 @@ export default function MovieInfo({ info }) {
 }
     const location = useLocation()
      const backPath = useRef(location.state)
-    console.log(backPath.current)
+    console.log(location)
     
     
      const { genres, title, vote_average, overview, tagline, poster_path } = info;
     return <div >
-       
-       <Link to={`${backPath.current.pathname}${backPath.current.search}`} className={css.goBack}>Go back</Link>
+        {backPath.current  && <Link to={`${backPath.current.pathname}${backPath.current.search}`} className={css.goBack}>Go back</Link> }
+       {!location.state &&  <Link to="/">Go back</Link>}
            
        <div className={css.div}>
           
