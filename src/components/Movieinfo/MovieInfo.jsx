@@ -15,8 +15,9 @@ export default function MovieInfo({ info }) {
     
      const { genres, title, vote_average, overview, tagline, poster_path } = info;
     return <div >
-        {backPath.current  && <Link to={`${backPath.current.pathname}${backPath.current.search}`} className={css.goBack}>Go back</Link> }
-       {!location.state &&  <Link to="/">Go back</Link>}
+        
+        {backPath.current  && <Link to={`${backPath.current.pathname}${backPath.current.search}`} className={css.goBack} >Go back</Link> || <Link to="/">Go back</Link>}
+       
            
        <div className={css.div}>
           
