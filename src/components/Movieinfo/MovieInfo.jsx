@@ -1,25 +1,29 @@
 import { Link, Outlet, NavLink, useLocation } from "react-router-dom"
 import css from "./MovieInfo.module.css"
 import { useRef } from "react"
+import clsx from "clsx";
 
 
 export default function MovieInfo({ info }) {
-   
+       const buildLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+}
     const location = useLocation()
      const backPath = useRef(location.state)
     console.log(backPath.current)
     
     
      const { genres, title, vote_average, overview, tagline, poster_path } = info;
-    return <div>
+    return <div >
        
-       <Link to={`${backPath.current.pathname}${backPath.current.search}`} >Go back</Link>
+       <Link to={`${backPath.current.pathname}${backPath.current.search}`} className={css.goBack}>Go back</Link>
            
-       <div>
+       <div className={css.div}>
           
-            <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} />
-            <div>
-                <h2>{title}</h2>
+           
+            <div className={css.list}>
+                <div> <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} /></div>
+               <div className={css.info}> <h2>{title}</h2>
                <h3>{tagline}</h3>
                <p> Rating: { vote_average}</p>
                 <h3>overview</h3>
@@ -29,15 +33,15 @@ export default function MovieInfo({ info }) {
                    {genres.map(({ id, name }) => {
                     return   <li key={id}>{name}</li>
                    })}
-                </ul>
+                </ul></div>
             </div>
             <p>Additional information</p>
             <ul>
                 <li>
-                    <NavLink to="reviews" state={  backPath }>Reviews</NavLink>
-                    <NavLink to="cast" state={  backPath   }>Cast</NavLink>
+                    <NavLink to="reviews" state={  backPath } className={buildLinkClass}>Reviews</NavLink>
+                    
                </li>
-               
+               <li><NavLink to="cast" state={  backPath   } className={buildLinkClass}>Cast</NavLink></li>
             </ul>
             <Outlet />
         </div>

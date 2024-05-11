@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import css from "./HomePage.module.css"
 import { useState } from "react"
 import { popularFilmList } from "../../api"
@@ -9,6 +9,7 @@ export default function HomePage() {
     const [data, setData] = useState([])
     const [error, setError] = useState(false)
     const [loader, setLoader] = useState(false)
+   
     useEffect(() => {
         async function getList() {
             try {
